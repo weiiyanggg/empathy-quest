@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy Quest</title>
+    <!-- Link to Tailwind CSS for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS for additional styling and overrides -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Set default font to Inter for a clean look -->
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <!-- Main container for the interactive story -->
+    <div class="story-container bg-white rounded-xl shadow-lg p-8 max-w-2xl w-full">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">The Whispering Woods</h1>
+        
+        <!-- Area to display the current story text -->
+        <p id="story-text" class="story-text text-lg text-gray-700 leading-relaxed mb-8 text-center"></p>
+        
+        <!-- Container for the choice buttons -->
+        <div id="choices" class="choices flex flex-wrap justify-center gap-4">
+            <!-- Choice buttons will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Link to your JavaScript file, deferred to ensure HTML content is loaded -->
+    <script src="script.js"></script>
+</body>
+</html>

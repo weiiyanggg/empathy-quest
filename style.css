@@ -1,0 +1,69 @@
+/* General body styling (already partly handled by Tailwind in HTML, but good for custom fonts or global resets) */
+body {
+    /* Tailwind classes handle background, min-height, flex centering, and padding */
+    /* font-family is set in inline style in index.html for simplicity */
+}
+
+/* Styles for the main story container */
+.story-container {
+    /* Tailwind classes handle bg-white, rounded-xl, shadow-lg, p-8, max-w-2xl, w-full */
+    /* No additional custom CSS needed here unless specific overrides are desired */
+}
+
+/* Styles for the story text paragraph */
+.story-text {
+    /* Tailwind classes handle text-lg, text-gray-700, leading-relaxed, mb-8, text-center */
+    /* No additional custom CSS needed here */
+}
+
+/* Styles for the choices container (flexbox properties already handled by Tailwind) */
+.choices {
+    /* Tailwind classes handle flex, flex-wrap, justify-center, gap-4 */
+    /* No additional custom CSS needed here */
+}
+
+/* Custom styles for the choice buttons */
+.choice-button {
+    /* Tailwind classes handle basic styling like padding, border-radius, font-size */
+    /* We'll add custom background, text color, and hover effects here to give them a distinct look */
+    background-color: #4F46E5; /* A vibrant indigo color */
+    color: #FFFFFF; /* White text for contrast */
+    border: none; /* Remove default button border */
+    padding: 1rem 2rem; /* More generous padding */
+    border-radius: 9999px; /* Fully rounded/pill shape */
+    cursor: pointer; /* Indicate it's clickable */
+    font-size: 1.125rem; /* Larger font size */
+    font-weight: 600; /* Semi-bold text */
+    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    flex-grow: 1; /* Allow buttons to grow and fill space */
+    max-width: 100%; /* Ensure responsiveness */
+    text-align: center; /* Center text within button */
+}
+
+/* Hover effect for choice buttons */
+.choice-button:hover {
+    background-color: #6366F1; /* Lighter indigo on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+/* Active (clicked) state for choice buttons */
+.choice-button:active {
+    background-color: #4338CA; /* Darker indigo when clicked */
+    transform: translateY(0); /* Reset lift effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* Reduced shadow */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 640px) {
+    .story-container {
+        padding: 1.5rem; /* Reduce padding on smaller screens */
+    }
+
+    .choice-button {
+        padding: 0.8rem 1.5rem; /* Adjust button padding */
+        font-size: 1rem; /* Adjust font size */
+        flex-basis: 100%; /* Make buttons full width on very small screens */
+    }
+}
