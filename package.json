@@ -1,0 +1,25 @@
+{
+  "name": "empathy-quest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weiiyanggg/empathy-quest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weiiyanggg/empathy-quest/issues"
+  },
+  "homepage": "https://github.com/weiiyanggg/empathy-quest#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "vite": "^7.0.6"
+  }
+}

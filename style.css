@@ -2,30 +2,97 @@
 body {
     /* Tailwind classes handle background, min-height, flex centering, and padding */
     /* font-family is set in inline style in index.html for simplicity */
+    background-image: url('images/sky_background.jpg'); /* Set the background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Keep the background fixed when scrolling */
+    transition: background-color 0.5s ease-in-out; /* Smooth transition for background color change */
 }
 
-/* Styles for the main story container */
-.story-container {
+/* Styles for the main application container */
+.app-container {
     /* Tailwind classes handle bg-white, rounded-xl, shadow-lg, p-8, max-w-2xl, w-full */
-    /* No additional custom CSS needed here unless specific overrides are desired */
+    /* No additional CSS needed here unless specific overrides are desired */
+    transition: all 0.5s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for size/position changes and opacity */
+}
+
+/* Styles for the home page section */
+#home-page {
+    /* Tailwind classes handle text-center */
+    /* No additional CSS needed here unless specific overrides are desired */
+}
+
+/* Styles for the player name input field */
+#playerName {
+    /* Tailwind classes handle w-full, max-w-sm, p-3, border, border-gray-300, rounded-lg, text-center, text-lg, focus:outline-none, focus:ring-2, focus:ring-indigo-500, mb-6 */
+    /* No additional CSS needed here */
+}
+
+/* Styles for the start button on the home page */
+.start-button {
+    /* Tailwind classes handle bg-indigo-600, text-white, font-bold, py-3, px-8, rounded-full, shadow-lg, hover:bg-indigo-700, transition-all, duration-300, transform hover:scale-105 */
+    /* No additional CSS needed here */
+}
+
+
+/* Styles for the story page section */
+#story-page {
+    /* Tailwind classes handle hidden (initially hidden) */
+    /* No additional CSS needed here unless specific overrides are desired */
+}
+
+/* Styles for the video container */
+#video-container {
+    /* Tailwind classes handle relative, w-full, aspect-video, bg-black, rounded-lg, overflow-hidden, mb-6, hidden */
+    /* No additional CSS needed here */
+}
+
+/* Styles for the loading spinner */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Styles for the story text paragraph */
 .story-text {
-    /* Tailwind classes handle text-lg, text-gray-700, leading-relaxed, mb-8, text-center */
-    /* No additional custom CSS needed here */
+    /* Tailwind classes handle text-lg, text-gray-700, leading-relaxed, mb-4, text-center */
+    /* No additional CSS needed here */
+}
+
+/* Styles for the question text */
+#story-question {
+    /* Tailwind classes handle text-xl, font-semibold, text-gray-800, mb-6, text-center, hidden */
+    /* No additional CSS needed here unless specific overrides are desired */
 }
 
 /* Styles for the choices container (flexbox properties already handled by Tailwind) */
 .choices {
-    /* Tailwind classes handle flex, flex-wrap, justify-center, gap-4 */
-    /* No additional custom CSS needed here */
+    /* Tailwind classes handle flex, flex-wrap, justify-center, gap-4, mb-8 */
+    /* No additional CSS needed here */
 }
 
 /* Custom styles for the choice buttons */
 .choice-button {
-    /* Tailwind classes handle basic styling like padding, border-radius, font-size */
-    /* We'll add custom background, text color, and hover effects here to give them a distinct look */
+    /* Fixed size for choice buttons */
+    width: 90%; /* Spans 90% of its parent container */
+    max-width: 400px; /* Max width to prevent it from becoming too wide on large screens */
+    height: 80px; /* Fixed height */
+    display: flex; /* Use flexbox to center text vertically */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    text-align: center; /* Ensure text is centered */
+
+    /* Existing styles */
     background-color: #4F46E5; /* A vibrant indigo color */
     color: #FFFFFF; /* White text for contrast */
     border: none; /* Remove default button border */
@@ -36,9 +103,7 @@ body {
     font-weight: 600; /* Semi-bold text */
     transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow */
-    flex-grow: 1; /* Allow buttons to grow and fill space */
-    max-width: 100%; /* Ensure responsiveness */
-    text-align: center; /* Center text within button */
+    /* Removed flex-grow and max-width as we are fixing the size */
 }
 
 /* Hover effect for choice buttons */
@@ -55,15 +120,289 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* Reduced shadow */
 }
 
+/* Styles for the empathy feedback section */
+#empathy-feedback-section {
+    /* Tailwind classes handle border-t-2, border-gray-200, pt-6, mt-6, space-y-4 */
+    /* No additional CSS needed here unless specific overrides are desired */
+}
+
+/* Styles for individual feedback paragraphs */
+#pov-text {
+    /* Tailwind classes handle text-base, text-gray-600, italic, hidden */
+    /* Adding a border-left for visual emphasis */
+    border-left: 4px solid #9CA3AF; /* A subtle gray border */
+    padding-left: 1rem;
+    margin-left: -1rem; /* Adjust margin to align with content */
+}
+
+#consequence-text {
+    /* Tailwind classes handle text-base, text-gray-600, hidden */
+}
+
+#other-person-thought {
+    /* Tailwind classes handle text-base, text-gray-600, hidden */
+    /* Making it a bit more distinct, like a thought bubble */
+    font-style: italic;
+    color: #4B5563; /* Slightly darker gray */
+}
+
+#image-description {
+    /* Tailwind classes handle text-base, text-gray-600, hidden */
+    font-weight: 500; /* Medium font weight */
+    color: #374151; /* Darker gray for emphasis */
+}
+
+#emotional-cue {
+    /* Tailwind classes handle text-base, text-gray-600, font-medium, hidden */
+    /* Making it stand out as a concluding thought */
+    font-size: 1.1em;
+    font-weight: 700; /* Bold */
+    color: #10B981; /* A pleasant green for positive reinforcement */
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+/* --- Gender Selection Styling (for the clickable labels) --- */
+
+/* Default state for gender options (unselected) */
+.gender-option {
+    border: 4px solid transparent; /* Transparent border by default */
+    box-shadow: none;
+    cursor: pointer; /* Ensure cursor indicates clickability */
+    display: flex; /* Ensure flex properties for internal alignment */
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem; /* Consistent padding */
+    border-radius: 0.5rem; /* Consistent border-radius */
+    /* Removed grayscale and opacity from here, as they are now on the background sprites */
+}
+
+/* Hover effect for gender options (for the clickable labels) */
+.gender-option:hover {
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+/* Styles for the text within the selected gender option (for the clickable labels) */
+.gender-option.selected span {
+    color: #4F46E5; /* Highlight text color */
+    font-weight: 700; /* Make text bold */
+}
+
+/* Ensure smooth transitions for all relevant properties */
+.gender-option,
+.gender-option span {
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Background Sprite Styling --- */
+
+.background-sprite {
+    position: absolute; /* Position relative to the body */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for true vertical centering */
+    width: 300px; /* Adjust size as needed */
+    height: 500px; /* Adjust size as needed */
+    background-size: contain; /* Ensure the image fits within the div */
+    background-repeat: no-repeat;
+    opacity: 0.3; /* Initially somewhat transparent */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transitions for selection */
+    z-index: 0; /* Place behind the main content */
+    pointer-events: none; /* Ensure clicks pass through to content */
+}
+
+#backgroundMaleSprite {
+    background-image: url('images/boy.jpg'); /* Updated to boy.jpg */
+    left: -50px; /* Position off-screen slightly to the left */
+    background-position: left center;
+}
+
+#backgroundFemaleSprite {
+    background-image: url('images/girl.jpg'); /* Updated to girl.jpg */
+    right: -50px; /* Position off-screen slightly to the right */
+    background-position: right center;
+}
+
+/* Styles for selected background sprites */
+.background-sprite.selected-sprite {
+    opacity: 1; /* Full opacity when selected */
+    transform: translateY(-50%) scale(1.05); /* Slightly enlarge and center */
+}
+
+/* --- Fullscreen Story Page Styles --- */
+/* When body has 'story-active' class, apply full screen styles */
+body.story-active {
+    background-color: #000; /* Dark background for immersive video */
+    display: block; /* Change display to allow app-container to fill */
+    padding: 0; /* Remove padding */
+}
+
+body.story-active .app-container {
+    max-width: 100vw; /* Max width to full viewport width */
+    width: 100vw; /* Set width to full viewport width */
+    min-height: 100vh; /* Min height to full viewport height */
+    height: 100vh; /* Set height to full viewport height */
+    border-radius: 0; /* Remove rounded corners */
+    box-shadow: none; /* Remove shadow */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    background-color: transparent; /* Make app-container background transparent */
+}
+
+/* Styles for video overlay */
+body.story-active.video-playing #video-container {
+    position: fixed; /* Fixed position relative to viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    z-index: 9999; /* High z-index to overlay everything */
+    background-color: #000; /* Ensure black background for video */
+    display: flex; /* Use flex to center video if it doesn't fill */
+    justify-content: center;
+    align-items: center;
+    border-radius: 0; /* Remove rounded corners */
+}
+
+body.story-active.video-playing #story-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure video fits without cropping */
+}
+
+/* Hide the main story content when video is playing */
+body.story-active.video-playing #story-content-container {
+    opacity: 0;
+    pointer-events: none; /* Disable interactions */
+}
+
+
+body.story-active #story-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem; /* Add some padding back for content */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+/* Book style layout for story content */
+body.story-active #story-content-container {
+    display: flex; /* Ensure flexbox */
+    flex-direction: row; /* Force row direction on larger screens */
+    width: 100%;
+    height: 100%;
+    max-width: 1200px; /* Max width for the book layout */
+    margin: auto; /* Center the book layout */
+    background-color: rgba(255, 255, 255, 0.85); /* Background for the book area */
+    border-radius: 1rem; /* Rounded corners for the book */
+    overflow: hidden; /* Hide overflow content */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+}
+
+body.story-active .story-left-half,
+body.story-active .story-right-half {
+    flex: 1; /* Each takes equal space */
+    padding: 2rem; /* Consistent padding inside halves */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+body.story-active .story-left-half {
+    border-right: 1px solid rgba(0, 0, 0, 0.1); /* Divider line */
+}
+
+body.story-active #story-page .story-text,
+body.story-active #story-page #story-question,
+body.story-active #story-page #choices {
+    background-color: transparent; /* Remove individual backgrounds, now on container */
+    padding: 0; /* Remove individual padding */
+    border-radius: 0; /* Remove individual border-radius */
+    max-width: 100%; /* Allow to fill its half */
+}
+
+body.story-active #empathy-feedback-section {
+    background-color: transparent; /* Remove individual backgrounds */
+    padding: 0; /* Remove individual padding */
+    border-radius: 0; /* Remove individual border-radius */
+    max-width: 100%;
+    margin-top: 1rem;
+}
+
+body.story-active .background-sprite {
+    opacity: 0 !important; /* Make sprites fully transparent */
+    transform: translateY(-50%) scale(0.8); /* Shrink slightly as they fade */
+}
+
 /* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .background-sprite {
+        width: 200px; /* Smaller sprites on smaller screens */
+        height: 350px;
+        top: auto; /* Reset top to allow bottom positioning */
+        bottom: 0; /* Position at the bottom */
+        transform: translateY(0); /* Remove vertical centering */
+        opacity: 0.2; /* More subtle on small screens */
+    }
+
+    #backgroundMaleSprite {
+        left: -20px;
+    }
+
+    #backgroundFemaleSprite {
+        right: -20px;
+    }
+
+    .background-sprite.selected-sprite {
+        transform: scale(1.05); /* Only scale, no translateY */
+    }
+
+    body.story-active .background-sprite {
+        opacity: 0 !important; /* Ensure they remain transparent */
+        transform: translateY(0) scale(0.8); /* Adjust transform for smaller screens */
+    }
+
+    /* Stack halves vertically on smaller screens */
+    body.story-active #story-content-container {
+        flex-direction: column;
+        height: auto; /* Allow height to adjust */
+        padding: 1rem; /* Add some padding for overall container */
+    }
+
+    body.story-active .story-left-half,
+    body.story-active .story-right-half {
+        width: 100%; /* Take full width */
+        padding: 1rem; /* Reduce padding */
+        border-right: none; /* Remove vertical divider */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Add horizontal divider */
+    }
+
+    body.story-active .story-right-half {
+        border-bottom: none; /* No border on the last half */
+    }
+
+    .choice-button {
+        width: 100%; /* Full width buttons on small screens */
+        height: auto; /* Auto height for content */
+        min-height: 60px; /* Minimum height */
+    }
+}
+
 @media (max-width: 640px) {
-    .story-container {
+    .app-container {
         padding: 1.5rem; /* Reduce padding on smaller screens */
     }
 
     .choice-button {
         padding: 0.8rem 1.5rem; /* Adjust button padding */
         font-size: 1rem; /* Adjust font size */
-        flex-basis: 100%; /* Make buttons full width on very small screens */
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empathy Quest</title>
+    <title>The Empathy Journey</title>
     <!-- Link to Tailwind CSS for utility-first styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS for additional styling and overrides -->
@@ -15,18 +15,90 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <!-- Main container for the interactive story -->
-    <div class="story-container bg-white rounded-xl shadow-lg p-8 max-w-2xl w-full">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">The Whispering Woods</h1>
-        
-        <!-- Area to display the current story text -->
-        <p id="story-text" class="story-text text-lg text-gray-700 leading-relaxed mb-8 text-center"></p>
-        
-        <!-- Container for the choice buttons -->
-        <div id="choices" class="choices flex flex-wrap justify-center gap-4">
-            <!-- Choice buttons will be injected here by JavaScript -->
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+    <!-- Background Male Sprite -->
+    <div id="backgroundMaleSprite" class="background-sprite left-0"></div>
+    <!-- Background Female Sprite -->
+    <div id="backgroundFemaleSprite" class="background-sprite right-0"></div>
+
+    <!-- Main container for the entire application (home page or story) -->
+    <div class="app-container bg-white rounded-xl shadow-lg p-8 max-w-2xl w-full relative z-10">
+
+        <!-- Home Page Section -->
+        <div id="home-page" class="text-center">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Welcome to The Empathy Journey</h1>
+            <p class="text-lg text-gray-700 leading-relaxed mb-8">Embark on an interactive journey where your choices shape the tale and reveal new perspectives.</p>
+            
+            <label for="playerName" class="block text-xl font-semibold text-gray-800 mb-4">What is your name, adventurer?</label>
+            <input type="text" id="playerName" placeholder="Enter your name"
+                   class="w-full max-w-sm p-3 border border-gray-300 rounded-lg text-center text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-6">
+            
+            <!-- Gender Selection Section -->
+            <div class="mb-8">
+                <p class="block text-xl font-semibold text-gray-800 mb-4">Choose your avatar:</p>
+                <div class="flex justify-center items-center gap-8">
+                    <!-- Male Avatar Option (now just the clickable label) -->
+                    <label class="gender-option cursor-pointer flex flex-col items-center p-4 rounded-lg transition-all duration-200">
+                        <input type="radio" name="gender" value="male" id="genderMale" class="hidden">
+                        <span class="text-lg font-medium text-gray-700">Male</span>
+                    </label>
+                    
+                    <!-- Female Avatar Option (now just the clickable label) -->
+                    <label class="gender-option cursor-pointer flex flex-col items-center p-4 rounded-lg transition-all duration-200">
+                        <input type="radio" name="gender" value="female" id="genderFemale" class="hidden">
+                        <span class="text-lg font-medium text-gray-700">Female</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="startButton" class="start-button bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105">
+                Begin Your Story
+            </button>
         </div>
+
+        <!-- Story Page Section (initially hidden) -->
+        <div id="story-page" class="hidden">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">The Empathy Journey</h1>
+            
+            <!-- Video Player Container -->
+            <div id="video-container" class="relative w-full aspect-video bg-black rounded-lg overflow-hidden mb-6 hidden">
+                <video id="story-video" class="w-full h-full object-contain" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture></video>
+                <!-- Loading Spinner -->
+                <div id="video-loading-spinner" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 z-10 hidden">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- Content Container for Book Style Layout -->
+            <div id="story-content-container" class="flex flex-col md:flex-row w-full h-full gap-4">
+                <!-- Left Half: Story Text and Feedback -->
+                <div class="story-left-half flex flex-col justify-center items-center p-4">
+                    <!-- Area to display the current story text -->
+                    <p id="story-text" class="story-text text-lg text-gray-700 leading-relaxed mb-4 text-center"></p>
+                    
+                    <!-- Area to display the question for choices -->
+                    <p id="story-question" class="text-xl font-semibold text-gray-800 mb-6 text-center hidden"></p>
+
+                    <!-- Empathy Feedback Section -->
+                    <div id="empathy-feedback-section" class="border-t-2 border-gray-200 pt-6 mt-6 space-y-4">
+                        <p id="pov-text" class="text-base text-gray-600 italic hidden"></p>
+                        <p id="consequence-text" class="text-base text-gray-600 hidden"></p>
+                        <p id="other-person-thought" class="text-base text-gray-600 hidden"></p>
+                        <p id="image-description" class="text-base text-gray-600 hidden"></p>
+                        <p id="emotional-cue" class="text-base text-gray-600 font-medium hidden"></p>
+                    </div>
+                </div>
+
+                <!-- Right Half: Choices -->
+                <div class="story-right-half flex flex-col justify-center items-center p-4">
+                    <!-- Container for the choice buttons -->
+                    <div id="choices" class="choices flex flex-wrap justify-center gap-4 mb-8">
+                        <!-- Choice buttons will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Link to your JavaScript file, deferred to ensure HTML content is loaded -->
